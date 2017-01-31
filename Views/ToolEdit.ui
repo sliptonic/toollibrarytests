@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>445</width>
+    <height>349</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="uiName">
+     <property name="maxLength">
+      <number>50</number>
+     </property>
+     <property name="placeholderText">
+      <string>Display Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="uiToolType">
+     <property name="currentIndex">
+      <number>6</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Drill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CenterDrill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CounterSink</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CounterBore</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Reamer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tap</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>EndMill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SlotCutter</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BallEndMill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ChamferMill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CornerRound</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Engraver</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Material</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="uiMaterial">
+     <item>
+      <property name="text">
+       <string>HighSpeedSteel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>HighCarbonSteel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CastAlloy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Carbide</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ceramics</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diamond</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sialon</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Diameter</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Length Offset</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Flat Radius</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Corner Radius</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Cutting Edge Angle</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Cutting Edge Height</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="uiDiameter"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="uiLengthOffset"/>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="uiFlatRadius"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="uiCornerRadius"/>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="uiCuttingEdgeAngle"/>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="uiCuttingEdgeHeight"/>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLineEdit" name="uiHiddenMaterial">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="uiHiddenType">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
