@@ -385,8 +385,8 @@ class ToolEditPanel(tooleditBase,tooleditForm):
         self._dataMapper = QtGui.QDataWidgetMapper()
         # self._typeDelegate = QtGui.QItemDelegate()
         # self._typeDelegate.
-        self.uiToolType.currentIndexChanged.connect(self._setTypeCombo)
-        self.uiHiddenType.editingFinished.connect(self._setTypeCombo)
+        #self.uiToolType.currentIndexChanged.connect(self._setTypeCombo)
+        #self.uiHiddenType.editingFinished.connect(self._setTypeCombo)
 
     def setModel(self, proxyModel):
         print "setting tooleditpanel model"
@@ -396,11 +396,10 @@ class ToolEditPanel(tooleditBase,tooleditForm):
 
         self._dataMapper.setModel(proxyModel.sourceModel())
         self._dataMapper.addMapping(self.uiName, 0)
-        #self._dataMapper.addMapping(self.uiToolType, 1)
-        self._dataMapper.addMapping(self.uiHiddenType, 1)
-        
-        #self._dataMapper.addMapping(self.uiMaterial, 2)
-        self._dataMapper.addMapping(self.uiHiddenMaterial, 2)
+        self._dataMapper.addMapping(self.uiToolType, 1, "currentText")
+        #self._dataMapper.addMapping(self.uiHiddenType, 1)
+        self._dataMapper.addMapping(self.uiMaterial, 2, "currentText")
+        #self._dataMapper.addMapping(self.uiHiddenMaterial, 2)
         self._dataMapper.addMapping(self.uiDiameter, 3)
         self._dataMapper.addMapping(self.uiLengthOffset, 4)
         self._dataMapper.addMapping(self.uiFlatRadius, 5)
@@ -409,17 +408,17 @@ class ToolEditPanel(tooleditBase,tooleditForm):
         self._dataMapper.addMapping(self.uiCuttingEdgeHeight, 8)
 
 
-    def _setTypeCombo(self):
-        tt = str(self.uiHiddenType.text())
-        tt = self.uiToolType.currentIndex()
-        ttstring = self.getType(tt)
-        self.uiHiddenType.setText(ttstring)
-        #print "made it {}: {}".format(tt, self.getType(tt))
+#     def _setTypeCombo(self):
+#         tt = str(self.uiHiddenType.text())
+#         tt = self.uiToolType.currentIndex()
+#         ttstring = self.getType(tt)
+#         self.uiHiddenType.setText(ttstring)
+#         #print "made it {}: {}".format(tt, self.getType(tt))
 
     def setSelection(self, current):
         print 'setting item selection'
         current = self._proxyModel.mapToSource(current)
-        print current
+       # print current
         parent = current.parent()
         # print parent
         self._dataMapper.setRootIndex(parent)
@@ -475,16 +474,20 @@ class EditorPanel(base,form):
         rootNode = Node("Library")
         cn0 = ListNode("Library", rootNode)
         cn1 = ToolNode("1/4 inch cutter", cn0)
-        cn2 = ToolNode("Face mill", cn0)
+        cn1.setToolMaterial("CastAlloy")
+        cn2 = ToolNode("Face Mill", cn0)
         cn2.setToolDiameter(50.0)
         cn2.setToolMaterial("HighSpeedSteel")
         cn3 = ListNode("Plastic Tools", cn0)
         cn4 = ToolNode("5mm Drill", cn3)
         cn4.setToolType("CenterDrill")
+        cn4.setToolMaterial(2)
         cn5 = ToolNode("3mm endmill", cn3)
         cn6 = DocumentNode("document thing", rootNode)
         cn7 = JobNode("Job", cn6)
         cn8 = ToolNode("1/4 inch cutter", cn7)
+        cn8.setToolMaterial("Sialon")
+
 
         self._model = LibraryModel(rootNode)
 
@@ -495,6 +498,34 @@ class EditorPanel(base,form):
         #self._proxyModel.setFilterRegExp(filterstring)
 
         self.libraryList.setModel(self._proxyModel)
+
+        # materialList = QtCore.QStringList
+        # materialList.append('HighSpeedSteel')
+        # materialList.append('HighCarbonSteel')
+        # materialList.append('CastAlloy')
+        # materialList.append('Carbide')
+        # materialList.append('Ceramics')
+        # materialList.append('Diamond')
+        # materialList.append('Sialon')
+        # self._materialModel = QtGui.QStringListModel(materialList)
+
+        # typeList = QtCore.QStringList
+        # typeList.append('Drill')
+        # typeList.append('CenterDrill')
+        # typeList.append('CounterSink')
+        # typeList.append('CounterBore')
+        # typeList.append('Reamer')
+        # typeList.append('Tap')
+        # typeList.append('EndMill')
+        # typeList.append('SlotCutter')
+        # typeList.append('BallEndMill')
+        # typeList.append('ChamferMill')
+        # typeList.append('CornerRound')
+        # typeList.append('Engraver')
+        # self._typeModel = QtGui.QStringListModel(typeList)
+
+
+
 
         #hide all the data columns in the treeview
         for i in range(self._proxyModel.columnCount()-1):
